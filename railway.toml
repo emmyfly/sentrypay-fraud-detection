@@ -1,0 +1,8 @@
+[build]
+builder = "nixpacks"
+buildCommand = "cd sentrypay-backend && pip install -r requirements.txt && python data/generate_synthetic.py && cd model && python train.py && python train_mule_model.py"
+
+[deploy]
+startCommand = "cd sentrypay-backend/api && python main.py"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
